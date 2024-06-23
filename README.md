@@ -25,10 +25,10 @@
 ## Settings of .env file
 
 | Settings                 | Description                                                                            |
-| ------------------------ | -------------------------------------------------------------------------------------- |
+| ------------------------ |----------------------------------------------------------------------------------------|
 | **API_ID / API_HASH**    | Platform data from which to launch a Telegram session (stock - Android)                |
 | **MIN_AVAILABLE_ENERGY** | Minimum amount of available energy, upon reaching which there will be a delay (eg 100) |
-| **SLEEP_BY_MIN_ENERGY**  | Delay when reaching minimum energy in seconds (eg 200)                                 |
+| **SLEEP_BY_MIN_ENERGY**  | Delay when reaching minimum energy in seconds (eg [1000, 1200])                        |
 | **ADD_TAPS_ON_TURBO**    | How many taps will be added when turbo is activated (eg 2500)                          |
 | **AUTO_UPGRADE_TAP**     | Should I improve the tap (True / False)                                                |
 | **MAX_TAP_LEVEL**        | Maximum level of tap pumping (eg 5)                                                    |
