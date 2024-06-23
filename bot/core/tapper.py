@@ -16,6 +16,8 @@ from bot.utils.graphql import Query, OperationName
 from bot.utils.boosts import FreeBoostType, UpgradableBoostType
 from bot.exceptions import InvalidSession
 from .headers import headers
+from bot.utils.message_sender import send_message
+
 
 class Tapper:
     def __init__(self, tg_client: Client):
@@ -431,7 +433,7 @@ class Tapper:
                                     f"Boss health: <e>{boss_current_health}</e>")
                     else:
                         logger.info(f"{self.session_name} |  Successful tapped!  | "
-                                    f"Balance: <c>{balance}</c> (<g>No coin added </g>) | "
+                                    f"Balance: <c>{balance}</c> (<g>No coin added</g>) | "
                                     f"Boss health: <e>{boss_current_health}</e>")
                         noBalance = True
 
@@ -500,19 +502,24 @@ class Tapper:
                                 await asyncio.sleep(delay=1)
                             
                         if available_energy < settings.MIN_AVAILABLE_ENERGY:
+                            rand_sleep = randint(settings.SLEEP_BY_MIN_ENERGY[0], settings.SLEEP_BY_MIN_ENERGY[1])
                             logger.info(f"{self.session_name} |  Minimum energy reached: {available_energy}")
-                            logger.info(f"{self.session_name} |  Sleep {settings.SLEEP_BY_MIN_ENERGY}s")
+                            logger.info(f"{self.session_name} |  Sleep {rand_sleep}s")
 
-                            await asyncio.sleep(delay=settings.SLEEP_BY_MIN_ENERGY)
+                            await asyncio.sleep(delay=rand_sleep)
 
                             continue
 
                 except InvalidSession as error:
-                    raise error
+                    logger.error(f"{self.session_name} | ! ️InvalidSession: {error}")
+                    await send_message(self.tg_client, f"{self.session_name} | ! ️InvalidSession: {error}")
+                    break
 
                 except Exception as error:
                     logger.error(f"{self.session_name} | ! ️Unknown error: {error}")
+                    await send_message(self.tg_client, f"{self.session_name} | ! ️Unknown error: {error}")
                     await asyncio.sleep(delay=3)
+                    break
 
                 else:
                     sleep_between_clicks = randint(a=settings.SLEEP_BETWEEN_TAP[0], b=settings.SLEEP_BETWEEN_TAP[1])
@@ -520,7 +527,7 @@ class Tapper:
                     if active_turbo is True:
                         sleep_between_clicks = 4
                     elif noBalance is True:
-                        sleep_between_clicks = 200
+                        sleep_between_clicks = randint(200, 300)
 
                     logger.info(f" Sleep {sleep_between_clicks}s")
                     await asyncio.sleep(delay=sleep_between_clicks)
