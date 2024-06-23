@@ -1,6 +1,8 @@
 
 [![Static Badge](https://img.shields.io/badge/Telegram-Bot%20Link-Link?style=for-the-badge&logo=Telegram&logoColor=white&logoSize=auto&color=blue)](https://t.me/memefi_coin_bot?start=r_f7343cf2c5)
 
+[MemefiBot link](https://t.me/memefi_coin_bot?start=r_f7343cf2c5)
+
 #### Join my [Telegram channel](https://t.me/scriptron). I will be posting news about new bots and scripts there.
 
 > 🇷🇺 README на русском доступен [здесь](README-RU.md)
