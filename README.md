@@ -11,7 +11,7 @@
 ## Functionality
 
 | Functional                                                     | Supported |
-| -------------------------------------------------------------- | :-------: |
+|----------------------------------------------------------------| :-------: |
 | Purchasing TapBot                                              |    ✅     |
 | Starting TapBot                                                |    ✅     |
 | Claiming TapBot reward every 3 hours                           |    ✅     |
@@ -23,6 +23,7 @@
 | Random number of clicks per request                            |    ✅     |
 | Support tdata / pyrogram .session / telethon .session          |    ✅     |
 | Referral bonus claiming after first time registering           |    ✅     |
+| Sends the message about an error to your telegram account      |    ✅     |
 
 ## Settings of .env file
 
