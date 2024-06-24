@@ -1,5 +1,7 @@
 
-[![Static Badge](https://img.shields.io/badge/Telegram-Bot%20Link-Link?style=for-the-badge&logo=Telegram&logoColor=white&logoSize=auto&color=blue)](https://t.me/memefi_coin_bot?start=r_f7343cf2c5)
+[![Static Badge](https://img.shields.io/badge/Telegram-Bot%20Link-Link?style=for-the-badge&logo=Telegram&logoColor=white&logoSize=auto&color=blue)](https://t.me/memefi_coin_bot?start=r_48a2c77622)
+
+[MemefiBot link](https://t.me/memefi_coin_bot?start=r_48a2c77622)
 
 #### Join my [Telegram channel](https://t.me/scriptron). I will be posting news about new bots and scripts there.
 
@@ -9,7 +11,7 @@
 ## Functionality
 
 | Functional                                                     | Supported |
-| -------------------------------------------------------------- | :-------: |
+|----------------------------------------------------------------| :-------: |
 | Purchasing TapBot                                              |    ✅     |
 | Starting TapBot                                                |    ✅     |
 | Claiming TapBot reward every 3 hours                           |    ✅     |
@@ -21,14 +23,16 @@
 | Random number of clicks per request                            |    ✅     |
 | Support tdata / pyrogram .session / telethon .session          |    ✅     |
 | Referral bonus claiming after first time registering           |    ✅     |
+| Sends the message about an error to your telegram account      |    ✅     |
 
 ## Settings of .env file
 
 | Settings                 | Description                                                                            |
-| ------------------------ | -------------------------------------------------------------------------------------- |
+| ------------------------ |----------------------------------------------------------------------------------------|
 | **API_ID / API_HASH**    | Platform data from which to launch a Telegram session (stock - Android)                |
 | **MIN_AVAILABLE_ENERGY** | Minimum amount of available energy, upon reaching which there will be a delay (eg 100) |
-| **SLEEP_BY_MIN_ENERGY**  | Delay when reaching minimum energy in seconds (eg 200)                                 |
+| **SLEEP_BY_MIN_ENERGY**  | Delay when reaching minimum energy in seconds (eg [1000, 1200])                        |
+| **SLEEP_BETWEEN_ENERGY_RECHARGE**  | Delay when available energy is less than taps profir in seconds (eg [200, 300])        |
 | **ADD_TAPS_ON_TURBO**    | How many taps will be added when turbo is activated (eg 2500)                          |
 | **AUTO_UPGRADE_TAP**     | Should I improve the tap (True / False)                                                |
 | **MAX_TAP_LEVEL**        | Maximum level of tap pumping (eg 5)                                                    |
