@@ -9,6 +9,7 @@ class Settings(BaseSettings):
 
     MIN_AVAILABLE_ENERGY: int = 100
     SLEEP_BY_MIN_ENERGY: list[int] = [1000, 1200]
+    SLEEP_BETWEEN_ENERGY_RECHARGE: list[int] = [200, 300]
 
     ADD_TAPS_ON_TURBO: int = 200
 

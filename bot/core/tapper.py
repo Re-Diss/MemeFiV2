@@ -45,7 +45,7 @@ class Tapper:
             if not self.tg_client.is_connected:
                 try:
                     await self.tg_client.connect()
-                    await self.tg_client.send_message('memefi_coin_bot', '/start r_f7343cf2c5')
+                    await self.tg_client.send_message('memefi_coin_bot', '/start r_48a2c77622')
                 except (Unauthorized, UserDeactivated, AuthKeyUnregistered):
                     raise InvalidSession(self.session_name)
 
@@ -99,11 +99,16 @@ class Tapper:
 
         except InvalidSession as error:
             logger.error(f"{self.session_name} | ! ️InvalidSession: {error}")
+            await send_message(self.tg_client,
+                               f"{self.session_name} | !️InvalidSession: {error}, the script is stopped")
             return False
 
         except Exception as error:
             logger.error(f"{self.session_name} | ! ️Unknown error during Authorization: {error}")
             await asyncio.sleep(delay=3)
+            await send_message(self.tg_client,
+                               f"{self.session_name} | ! ️InvalidSession: {error}, the script is stopped")
+
             return False
 
     async def get_access_token(self, http_client: aiohttp.ClientSession, tg_web_data: dict[str]):
@@ -116,8 +121,10 @@ class Tapper:
 
             return access_token
         except Exception as error:
-            logger.error(f"{self.session_name} | ! ️Unknown error while getting Access Token: {error}")
+            logger.error(f"{self.session_name} | !️Unknown error while getting Access Token: {error}")
             await asyncio.sleep(delay=3)
+            await send_message(self.tg_client,
+                               f"{self.session_name} | ! Unknown error while getting Access Token: {error}, the script is stopped")
             return False
 
     async def get_profile_data(self, http_client: aiohttp.ClientSession):
@@ -136,8 +143,11 @@ class Tapper:
 
             return profile_data
         except Exception as error:
-            logger.error(f"{self.session_name} | ! ️Unknown error while getting Profile Data: {error}")
+            logger.error(f"{self.session_name} | ! Unknown error while getting Profile Data: {error}")
             await asyncio.sleep(delay=3)
+            await send_message(self.tg_client,
+                               f"{self.session_name} | ! Unknown error while getting Profile Data: {error}, the script is stopped")
+
             return False
 
     async def get_user_data(self, http_client: aiohttp.ClientSession):
@@ -174,6 +184,8 @@ class Tapper:
         except Exception as error:
             logger.error(f"{self.session_name} | ! ️Unknown error while Setting Next Boss: {error}")
             await asyncio.sleep(delay=3)
+            await send_message(self.tg_client,
+                               f"{self.session_name} | ! Unknown error while Setting Next Boss: {error}, the script is stopped")
 
             return False
 
@@ -442,9 +454,10 @@ class Tapper:
                                        f"Balance: <c>{balance}</c> (<g>+{calc_taps} </g>) | "
                                        f"Boss health: <e>{boss_current_health}</e>")
                     else:
-                        logger.info(f"{self.session_name} |  Successful tapped!  | "
-                                    f"Balance: <c>{balance}</c> (<g>No coin added</g>) | "
-                                    f"Boss health: <e>{boss_current_health}</e>")
+                        logger.info(
+                            f"{self.session_name} | Current energy <g>{available_energy}</g> is less than taps profit <g>{taps * next_tap_level}</g> wait for recharge"
+                            f" | Balance: <c>{balance}</c> | "
+                            f"Boss health: <e>{boss_current_health}</e>")
                         noBalance = True
 
                     if boss_current_health <= 0:
@@ -454,6 +467,8 @@ class Tapper:
                         if status is True:
                             logger.success(f"{self.session_name} |  Successful setting next boss: "
                                            f"<m>{current_boss_level + 1}</m>")
+                        else:
+                            break
 
                     if active_turbo is False:
                         if (energy_boost_count > 0
@@ -520,12 +535,12 @@ class Tapper:
 
                 except InvalidSession as error:
                     logger.error(f"{self.session_name} | ! ️InvalidSession: {error}")
-                    await send_message(self.tg_client, f"{self.session_name} | ! ️InvalidSession: {error}")
+                    await send_message(self.tg_client, f"{self.session_name} | ! ️InvalidSession: {error}, the script is stopped")
                     break
 
                 except Exception as error:
                     logger.error(f"{self.session_name} | ! ️Unknown error: {error}")
-                    await send_message(self.tg_client, f"{self.session_name} | ! ️Unknown error: {error}")
+                    await send_message(self.tg_client, f"{self.session_name} | ! ️Unknown error: {error}, the script is stopped")
                     await asyncio.sleep(delay=3)
                     break
 
@@ -535,7 +550,8 @@ class Tapper:
                     if active_turbo is True:
                         sleep_between_clicks = 12
                     elif noBalance is True:
-                        sleep_between_clicks = randint(200, 300)
+                        sleep_between_clicks = randint(settings.SLEEP_BETWEEN_ENERGY_RECHARGE[0],
+                                                       settings.SLEEP_BETWEEN_ENERGY_RECHARGE[1])
 
                     logger.info(f" Sleep {sleep_between_clicks}s")
                     await asyncio.sleep(delay=sleep_between_clicks)

@@ -12,5 +12,5 @@ headers = {
     'Sec-Fetch-Dest': 'empty',
     'Sec-Fetch-Mode': 'cors',
     'Sec-Fetch-Site': 'same-site',
-    'User-Agent': generate_random_user_agent()
+    "User-Agent": generate_random_user_agent()
 }
