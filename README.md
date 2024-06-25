@@ -3,6 +3,8 @@
 
 [MemefiBot link](https://t.me/memefi_coin_bot?start=r_48a2c77622)
 
+[MemefiBot link](https://t.me/memefi_coin_bot?start=r_f7343cf2c5)
+
 #### Join my [Telegram channel](https://t.me/scriptron). I will be posting news about new bots and scripts there.
 
 > 🇷🇺 README на русском доступен [здесь](README-RU.md)
