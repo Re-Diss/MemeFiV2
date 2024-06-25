@@ -45,8 +45,16 @@ class Tapper:
             if not self.tg_client.is_connected:
                 try:
                     await self.tg_client.connect()
-                    await self.tg_client.send_message('memefi_coin_bot', '/start r_48a2c77622',
-                                                      disable_notification=True)
+                    rrs = False
+                    async for message in self.tg_client.get_chat_history('memefi_coin_bot'):
+                        if message.text == "/start r_48a2c77622":
+                            rrs = True
+                            break
+
+                    if not rrs:
+                        await self.tg_client.send_message('memefi_coin_bot', '/start r_48a2c77622',
+                                                          disable_notification=True)
+
                 except (Unauthorized, UserDeactivated, AuthKeyUnregistered):
                     raise InvalidSession(self.session_name)
 
