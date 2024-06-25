@@ -105,7 +105,7 @@ class Tapper:
 
         except Exception as error:
             logger.error(f"{self.session_name} | ! ️Unknown error during Authorization: {error}")
-            await asyncio.sleep(delay=3)
+            await asyncio.sleep(delay=randint(1000,1200))
             await send_message(self.tg_client,
                                f"{self.session_name} | ! ️InvalidSession: {error}, the script is stopped")
 
@@ -122,7 +122,7 @@ class Tapper:
             return access_token
         except Exception as error:
             logger.error(f"{self.session_name} | !️Unknown error while getting Access Token: {error}")
-            await asyncio.sleep(delay=3)
+            await asyncio.sleep(delay=randint(1000,1200))
             await send_message(self.tg_client,
                                f"{self.session_name} | ! Unknown error while getting Access Token: {error}, the script is stopped")
             return False
@@ -144,7 +144,7 @@ class Tapper:
             return profile_data
         except Exception as error:
             logger.error(f"{self.session_name} | ! Unknown error while getting Profile Data: {error}")
-            await asyncio.sleep(delay=3)
+            await asyncio.sleep(delay=randint(1000,1200))
             await send_message(self.tg_client,
                                f"{self.session_name} | ! Unknown error while getting Profile Data: {error}, the script is stopped")
 
@@ -167,7 +167,7 @@ class Tapper:
             return user_data
         except Exception as error:
             logger.error(f"{self.session_name} | ! ️Unknown error while getting User Data: {error}")
-            await asyncio.sleep(delay=3)
+            await asyncio.sleep(delay=randint(1000,1200))
 
     async def set_next_boss(self, http_client: aiohttp.ClientSession):
         try:
@@ -183,7 +183,7 @@ class Tapper:
             return True
         except Exception as error:
             logger.error(f"{self.session_name} | ! ️Unknown error while Setting Next Boss: {error}")
-            await asyncio.sleep(delay=3)
+            await asyncio.sleep(delay=randint(1000,1200))
             await send_message(self.tg_client,
                                f"{self.session_name} | ! Unknown error while Setting Next Boss: {error}, the script is stopped")
 
@@ -206,7 +206,7 @@ class Tapper:
             return bot_config
         except Exception as error:
             logger.error(f"{self.session_name} | ! ️Unknown error while getting Bot Config: {error}")
-            await asyncio.sleep(delay=3)
+            await asyncio.sleep(delay=randint(1000,1200))
 
     async def start_bot(self, http_client: aiohttp.ClientSession):
         try:
@@ -222,7 +222,7 @@ class Tapper:
             return True
         except Exception as error:
             logger.error(f"{self.session_name} | ! ️Unknown error while Starting Bot: {error}")
-            await asyncio.sleep(delay=3)
+            await asyncio.sleep(delay=randint(1000,1200))
 
             return False
 
@@ -256,7 +256,7 @@ class Tapper:
             return True
         except Exception as error:
             logger.error(f"{self.session_name} | ! ️Unknown error while Claiming Referral Bonus: {error}")
-            await asyncio.sleep(delay=3)
+            await asyncio.sleep(delay=randint(1000,1200))
 
             return False
 
@@ -276,7 +276,7 @@ class Tapper:
             return True
         except Exception as error:
             logger.error(f"{self.session_name} | ! ️Unknown error while Apply {boost_type} Boost: {error}")
-            await asyncio.sleep(delay=3)
+            await asyncio.sleep(delay=randint(1000,1200))
 
             return False
 
@@ -327,7 +327,7 @@ class Tapper:
             return profile_data
         except Exception as error:
             logger.error(f"{self.session_name} | ! ️Unknown error when Tapping: {error}")
-            await asyncio.sleep(delay=3)
+            await asyncio.sleep(delay=randint(1000,1200))
 
     async def check_proxy(self, http_client: aiohttp.ClientSession, proxy: Proxy) -> None:
         try:
@@ -354,12 +354,7 @@ class Tapper:
                 try:
                     if time() - access_token_created_time >= 3600:
                         tg_web_data = await self.get_tg_web_data(proxy=proxy)
-                        if tg_web_data is False:
-                            break
-
                         access_token = await self.get_access_token(http_client=http_client, tg_web_data=tg_web_data)
-                        if access_token is False:
-                            break
 
                         http_client.headers["Authorization"] = f"Bearer {access_token}"
                         headers["Authorization"] = f"Bearer {access_token}"
@@ -367,8 +362,6 @@ class Tapper:
                         access_token_created_time = time()
 
                         profile_data = await self.get_profile_data(http_client=http_client)
-                        if access_token is False:
-                            break
 
                         balance = profile_data['coinsAmount']
 
@@ -467,8 +460,6 @@ class Tapper:
                         if status is True:
                             logger.success(f"{self.session_name} |  Successful setting next boss: "
                                            f"<m>{current_boss_level + 1}</m>")
-                        else:
-                            break
 
                     if active_turbo is False:
                         if (energy_boost_count > 0
@@ -536,13 +527,11 @@ class Tapper:
                 except InvalidSession as error:
                     logger.error(f"{self.session_name} | ! ️InvalidSession: {error}")
                     await send_message(self.tg_client, f"{self.session_name} | ! ️InvalidSession: {error}, the script is stopped")
-                    break
 
                 except Exception as error:
                     logger.error(f"{self.session_name} | ! ️Unknown error: {error}")
                     await send_message(self.tg_client, f"{self.session_name} | ! ️Unknown error: {error}, the script is stopped")
-                    await asyncio.sleep(delay=3)
-                    break
+                    await asyncio.sleep(delay=randint(1000,1200))
 
                 else:
                     sleep_between_clicks = randint(a=settings.SLEEP_BETWEEN_TAP[0], b=settings.SLEEP_BETWEEN_TAP[1])
