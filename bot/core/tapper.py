@@ -555,7 +555,7 @@ class Tapper:
                     sleep_between_clicks = randint(a=settings.SLEEP_BETWEEN_TAP[0], b=settings.SLEEP_BETWEEN_TAP[1])
 
                     if active_turbo is True:
-                        sleep_between_clicks = 12
+                        sleep_between_clicks = randint(10, 13)
                     elif noBalance is True:
                         sleep_between_clicks = randint(settings.SLEEP_BETWEEN_ENERGY_RECHARGE[0],
                                                        settings.SLEEP_BETWEEN_ENERGY_RECHARGE[1])
