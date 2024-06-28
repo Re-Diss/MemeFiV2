@@ -20,5 +20,5 @@ def generate_random_user_agent():
         "Mozilla/5.0 (Linux; Android 13; SM-A515U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Mobile Safari/537.36"
     ]
 
-    ua = random.randint(1, len(ua_list))
+    ua = random.randint(0, len(ua_list)-1)
     return ua_list[ua]
