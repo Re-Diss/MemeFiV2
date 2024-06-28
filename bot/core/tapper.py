@@ -347,6 +347,10 @@ class Tapper:
             logger.error(f"{self.session_name} | Proxy: {proxy} | Error: {error}")
 
     async def run(self, proxy: str | None):
+        rand_session_start = randint(1, 31)
+        logger.info(f"{self.session_name} | Wait {rand_session_start}s before session start")
+        await asyncio.sleep(delay=rand_session_start)
+
         access_token_created_time = 0
         turbo_time = 0
         active_turbo = False
@@ -384,7 +388,10 @@ class Tapper:
                         logger.info(f"{self.session_name} | Current boss level: <m>{current_boss_level}</m> | "
                                     f"Boss health: <e>{boss_current_health}</e> out of <r>{boss_max_health}</r>")
 
-                        await asyncio.sleep(delay=.5)
+                        initial_sleep = randint(settings.SLEEP_BETWEEN_TAP[0],
+                                                       settings.SLEEP_BETWEEN_TAP[1])
+                        logger.info(f" Sleep {initial_sleep}s before first clicks")
+                        await asyncio.sleep(delay=initial_sleep)
 
                     taps = randint(a=settings.RANDOM_TAPS_COUNT[0], b=settings.RANDOM_TAPS_COUNT[1])
                     bot_config = await self.get_bot_config(http_client=http_client)
@@ -548,7 +555,7 @@ class Tapper:
                     sleep_between_clicks = randint(a=settings.SLEEP_BETWEEN_TAP[0], b=settings.SLEEP_BETWEEN_TAP[1])
 
                     if active_turbo is True:
-                        sleep_between_clicks = 12
+                        sleep_between_clicks = randint(10, 13)
                     elif noBalance is True:
                         sleep_between_clicks = randint(settings.SLEEP_BETWEEN_ENERGY_RECHARGE[0],
                                                        settings.SLEEP_BETWEEN_ENERGY_RECHARGE[1])
