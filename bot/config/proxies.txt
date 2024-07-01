@@ -1,5 +1,3 @@
-type://user:pass@ip:port
-type://user:pass:ip:port
-type://ip:port:user:pass
-type://ip:port@user:pass
-type://ip:port
+socks5://64.137.57.167:6176:qiudyibr:p6pxenvlmxxh
+socks5://64.137.48.21:6228:qiudyibr:p6pxenvlmxxh
+socks5://64.137.48.18:6225:qiudyibr:p6pxenvlmxxh
