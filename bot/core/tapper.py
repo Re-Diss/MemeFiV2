@@ -109,14 +109,14 @@ class Tapper:
         except InvalidSession as error:
             logger.error(f"{self.session_name} | ! ️InvalidSession: {error}")
             await send_message(self.tg_client,
-                               f"{self.session_name} | !️InvalidSession: {error}, the script is stopped")
+                               f"{self.session_name} | !️InvalidSession: {error}")
             return False
 
         except Exception as error:
             logger.error(f"{self.session_name} | ! ️Unknown error during Authorization: {error}")
             await asyncio.sleep(delay=randint(1000, 1200))
             await send_message(self.tg_client,
-                               f"{self.session_name} | ! ️InvalidSession: {error}, the script is stopped")
+                               f"{self.session_name} | ! ️InvalidSession: {error}")
 
             return False
 
@@ -133,7 +133,7 @@ class Tapper:
             logger.error(f"{self.session_name} | !️Unknown error while getting Access Token: {error}")
             await asyncio.sleep(delay=randint(1000, 1200))
             await send_message(self.tg_client,
-                               f"{self.session_name} | ! Unknown error while getting Access Token: {error}, the script is stopped")
+                               f"{self.session_name} | ! Unknown error while getting Access Token: {error}")
             return False
 
     async def get_profile_data(self, http_client: aiohttp.ClientSession):
@@ -155,7 +155,7 @@ class Tapper:
             logger.error(f"{self.session_name} | ! Unknown error while getting Profile Data: {error}")
             await asyncio.sleep(delay=randint(1000, 1200))
             await send_message(self.tg_client,
-                               f"{self.session_name} | ! Unknown error while getting Profile Data: {error}, the script is stopped")
+                               f"{self.session_name} | ! Unknown error while getting Profile Data: {error}")
 
             return False
 
@@ -194,7 +194,7 @@ class Tapper:
             logger.error(f"{self.session_name} | ! ️Unknown error while Setting Next Boss: {error}")
             await asyncio.sleep(delay=randint(1000, 1200))
             await send_message(self.tg_client,
-                               f"{self.session_name} | ! Unknown error while Setting Next Boss: {error}, the script is stopped")
+                               f"{self.session_name} | ! Unknown error while Setting Next Boss: {error}")
 
             return False
 
@@ -543,12 +543,12 @@ class Tapper:
                 except InvalidSession as error:
                     logger.error(f"{self.session_name} | ! ️InvalidSession: {error}")
                     await send_message(self.tg_client,
-                                       f"{self.session_name} | ! ️InvalidSession: {error}, the script is stopped")
+                                       f"{self.session_name} | ! ️InvalidSession: {error}")
 
                 except Exception as error:
                     logger.error(f"{self.session_name} | ! ️Unknown error: {error}")
                     await send_message(self.tg_client,
-                                       f"{self.session_name} | ! ️Unknown error: {error}, the script is stopped")
+                                       f"{self.session_name} | ! ️Unknown error: {error}")
                     await asyncio.sleep(delay=randint(1000, 1200))
 
                 else:
