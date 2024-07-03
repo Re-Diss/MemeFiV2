@@ -470,11 +470,13 @@ class Tapper:
                         noBalance = True
 
                     if boss_current_health <= 0:
-                        logger.info(f"{self.session_name} |  Setting next boss: <m>{current_boss_level + 1}</m> lvl")
+                        logger.info(f"{self.session_name} | Setting next boss: <m>{current_boss_level + 1}</m> lvl")
+                        logger.info(f"{self.session_name} | Sleep 15m")
+                        await asyncio.sleep(delay=900)
 
                         status = await self.set_next_boss(http_client=http_client)
                         if status is True:
-                            logger.success(f"{self.session_name} |  Successful setting next boss: "
+                            logger.success(f"{self.session_name} | Successful setting next boss: "
                                            f"<m>{current_boss_level + 1}</m>")
 
                     if active_turbo is False:
