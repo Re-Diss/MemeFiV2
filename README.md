@@ -9,6 +9,8 @@
 > 🇷🇺 README на русском доступен [здесь](README-RU.md)
 # Use Python 3.11 or 3.10
 
+### IMPORTANT - use 1 account - 1 proxy
+
 ## Functionality
 
 | Functional                                                     | Supported |
