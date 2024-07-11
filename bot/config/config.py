@@ -7,28 +7,30 @@ class Settings(BaseSettings):
     API_ID: int
     API_HASH: str
 
-    MIN_AVAILABLE_ENERGY: int = 100
-    SLEEP_BY_MIN_ENERGY: list[int] = [1000, 1200]
-    SLEEP_BETWEEN_ENERGY_RECHARGE: list[int] = [200, 300]
+    MIN_AVAILABLE_ENERGY: int = 300
+    SLEEP_BY_MIN_ENERGY: int = 314
 
-    ADD_TAPS_ON_TURBO: int = 200
+    ADD_TAPS_ON_TURBO: list[int] = [1300, 2250]
 
     AUTO_BUY_TAPBOT: bool = True
 
-    AUTO_UPGRADE_TAP: bool = True
+    AUTO_UPGRADE_TAP: bool = False
     MAX_TAP_LEVEL: int = 5
-    AUTO_UPGRADE_ENERGY: bool = True
+    AUTO_UPGRADE_ENERGY: bool = False
     MAX_ENERGY_LEVEL: int = 5
-    AUTO_UPGRADE_CHARGE: bool = True
-    MAX_CHARGE_LEVEL: int = 3
+    AUTO_UPGRADE_CHARGE: bool = False
+    MAX_CHARGE_LEVEL: int = 5
 
     APPLY_DAILY_ENERGY: bool = True
     APPLY_DAILY_TURBO: bool = True
 
-    RANDOM_TAPS_COUNT: list[int] = [50, 200]
-    SLEEP_BETWEEN_TAP: list[int] = [15, 25]
+    RANDOM_TAPS_COUNT: list[int] = [7, 31]
+    SLEEP_BETWEEN_TAP: list[int] = [19, 36]
 
     USE_PROXY_FROM_FILE: bool = False
+
+
+    EMERGENCY_STOP: bool = True
 
 
 settings = Settings()
