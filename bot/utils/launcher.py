@@ -12,6 +12,7 @@ from bot.utils import logger
 from bot.core.tapper import run_tapper
 from bot.core.registrator import register_sessions
 
+
 start_text = """
 
 +-------------------------------------+
