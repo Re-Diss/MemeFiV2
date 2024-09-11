@@ -26,7 +26,7 @@ start_text = """
 Select an action:
 
     1. Create session
-    2. Run bot
+    2. Run clicker
 """
 
 
