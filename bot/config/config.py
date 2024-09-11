@@ -1,5 +1,3 @@
-from typing import Union
-
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -10,7 +8,7 @@ class Settings(BaseSettings):
     API_HASH: str
 
     MIN_AVAILABLE_ENERGY: int = 100
-    SLEEP_BY_MIN_ENERGY: Union[list[int], int] = [1800, 3600]
+    SLEEP_BY_MIN_ENERGY: int = 200
 
     ADD_TAPS_ON_TURBO: int = 2500
 
