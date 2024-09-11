@@ -15,9 +15,13 @@ from bot.core.registrator import register_sessions
 
 start_text = """
 
-░█▀▄▀█ █▀▀ █▀▄▀█ █▀▀ ░█▀▀▀  ▀  ░█▀▀█ █▀▀█ ▀▀█▀▀ 
-░█░█░█ █▀▀ █ ▀ █ █▀▀ ░█▀▀▀ ▀█▀ ░█▀▀▄ █  █   █ 
-░█  ░█ ▀▀▀ ▀   ▀ ▀▀▀ ░█    ▀▀▀ ░█▄▄█ ▀▀▀▀   ▀
++-------------------------------------+
+|                                     |
+|              MemeFiV2               |
+|            by scriptron             |
+|        https://t.me/scriptron       |
+|                                     |
++-------------------------------------+
 
 Select an action:
 
